@@ -4,7 +4,6 @@ plugins {
 
     // Add this line
     alias(libs.plugins.google.devtools.ksp)
-    id("org.jetbrains.kotlin.plugin.compose") version "2.0.21"
 }
 
 android {
