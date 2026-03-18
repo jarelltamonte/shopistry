@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "357417054725",
+    "project_id": "shopistry-8df94",
+    "storage_bucket": "shopistry-8df94.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:357417054725:android:8fc520795f098b7fa9a26c",
+        "android_client_info": {
+          "package_name": "com.example.basicviews"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAoGydxgaIaKr-2WnarZL2zaL_z6T6UT0E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
