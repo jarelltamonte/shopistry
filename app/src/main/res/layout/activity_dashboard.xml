@@ -7,16 +7,14 @@
     android:layout_height="match_parent"
     tools:context=".Dashboard">
 
-
     <SearchView
         android:id="@+id/searchView"
-        android:layout_width="443dp"
-        android:layout_height="84dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
         android:layout_marginEnd="12dp"
         android:iconifiedByDefault="false"
-        android:queryHint="What are you looking for?"
-        android:tooltipText="What are you looking for?"
+        android:queryHint="Search treats..."
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -26,15 +24,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="16dp"
         android:text="Good morning, Jarell"
         android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/searchView" />
 
-    <!-- Categories Section -->
     <TextView
         android:id="@+id/tvCategoriesTitle"
         android:layout_width="wrap_content"
@@ -53,9 +48,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:scrollbars="none"
-        app:layout_constraintTop_toBottomOf="@+id/tvCategoriesTitle"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/tvCategoriesTitle">
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -64,7 +57,6 @@
             android:paddingStart="12dp"
             android:paddingEnd="12dp">
 
-            <!-- Gadgets Category -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/categoryGadgets"
                 android:layout_width="120dp"
@@ -74,31 +66,16 @@
                 app:cardElevation="4dp"
                 android:clickable="true"
                 android:focusable="true">
-
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical"
-                    android:gravity="center"
-                    android:padding="12dp">
-
-                    <ImageView
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:src="@android:drawable/ic_menu_gallery"
-                        tools:ignore="ContentDescription" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:text="Gadgets"
-                        android:textSize="14sp"
-                        android:textStyle="bold" />
+                    android:gravity="center">
+                    <ImageView android:layout_width="40dp" android:layout_height="40dp" android:src="@android:drawable/ic_menu_gallery" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Breads" android:textStyle="bold" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
-            <!-- Clothing Category -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/categoryClothing"
                 android:layout_width="120dp"
@@ -108,31 +85,16 @@
                 app:cardElevation="4dp"
                 android:clickable="true"
                 android:focusable="true">
-
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical"
-                    android:gravity="center"
-                    android:padding="12dp">
-
-                    <ImageView
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:src="@android:drawable/ic_menu_gallery"
-                        tools:ignore="ContentDescription" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:text="Clothing"
-                        android:textSize="14sp"
-                        android:textStyle="bold" />
+                    android:gravity="center">
+                    <ImageView android:layout_width="40dp" android:layout_height="40dp" android:src="@android:drawable/ic_menu_gallery" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Pastries" android:textStyle="bold" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
-            <!-- Accessories Category -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/categoryAccessories"
                 android:layout_width="120dp"
@@ -141,249 +103,60 @@
                 app:cardElevation="4dp"
                 android:clickable="true"
                 android:focusable="true">
-
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical"
-                    android:gravity="center"
-                    android:padding="12dp">
-
-                    <ImageView
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:src="@android:drawable/ic_menu_gallery"
-                        tools:ignore="ContentDescription" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:text="Accessories"
-                        android:textSize="14sp"
-                        android:textStyle="bold" />
+                    android:gravity="center">
+                    <ImageView android:layout_width="40dp" android:layout_height="40dp" android:src="@android:drawable/ic_menu_gallery" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cakes" android:textStyle="bold" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
-
         </LinearLayout>
     </HorizontalScrollView>
 
-    <!-- Products Title -->
     <TextView
         android:id="@+id/tvProductsTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
         android:layout_marginTop="16dp"
-        android:text="Products"
+        android:text="All Products"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/categoriesScrollView" />
 
-    <!-- Product 1: iPhone 15 -->
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardProduct1"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvBakeryItems"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_margin="12dp"
-        app:cardCornerRadius="12dp"
-        app:cardElevation="4dp"
-        app:layout_constraintTop_toBottomOf="@id/tvProductsTitle"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toTopOf="@id/bottomNav"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintTop_toBottomOf="@id/tvProductsTitle" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="16dp">
-
-            <TextView
-                android:id="@+id/tvProductName1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="iPhone 15"
-                android:textSize="18sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/tvProductPrice1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:text="PHP 79,990.00"
-                android:textSize="16sp"
-                android:textColor="#2E7D32" />
-
-            <TextView
-                android:id="@+id/tvProductStock1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:text="In Stock: 12"
-                android:textSize="14sp"
-                android:textColor="#757575" />
-
-        </LinearLayout>
-    </androidx.cardview.widget.CardView>
-
-    <!-- Product 2: Samsung Galaxy Watch 6 -->
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardProduct2"
-        android:layout_width="0dp"
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabAddItem"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="12dp"
-        app:cardCornerRadius="12dp"
-        app:cardElevation="4dp"
-        app:layout_constraintTop_toBottomOf="@id/cardProduct1"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        android:layout_margin="24dp"
+        android:src="@android:drawable/ic_input_add"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@id/bottomNav"
+        app:layout_constraintEnd_toEndOf="parent" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="16dp">
-
-            <TextView
-                android:id="@+id/tvProductName2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Samsung Galaxy Watch 6"
-                android:textSize="18sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/tvProductPrice2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:text="PHP 18,990.00"
-                android:textSize="16sp"
-                android:textColor="#2E7D32" />
-
-            <TextView
-                android:id="@+id/tvProductStock2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:text="In Stock: 8"
-                android:textSize="14sp"
-                android:textColor="#757575" />
-
-        </LinearLayout>
-    </androidx.cardview.widget.CardView>
-
-    <!-- Product 3: Nike Air Max -->
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardProduct3"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_margin="12dp"
-        app:cardCornerRadius="12dp"
-        app:cardElevation="4dp"
-        app:layout_constraintTop_toBottomOf="@id/cardProduct2"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="16dp">
-
-            <TextView
-                android:id="@+id/tvProductName3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Nike Air Max 2024"
-                android:textSize="18sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/tvProductPrice3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:text="PHP 7,495.00"
-                android:textSize="16sp"
-                android:textColor="#2E7D32" />
-
-            <TextView
-                android:id="@+id/tvProductStock3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:text="In Stock: 25"
-                android:textSize="14sp"
-                android:textColor="#757575" />
-
-        </LinearLayout>
-    </androidx.cardview.widget.CardView>
-
-    <!-- Bottom Navigation -->
     <LinearLayout
         android:id="@+id/bottomNav"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:orientation="horizontal"
         android:gravity="center"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
-
-        <LinearLayout
-            android:id="@+id/navHome"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="vertical"
-            android:clickable="true"
-            android:focusable="true">
-
-            <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                app:srcCompat="@drawable/homeico"
-                tools:ignore="ContentDescription" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/navCart"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="vertical"
-            android:clickable="true"
-            android:focusable="true">
-
-            <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                app:srcCompat="@drawable/cart"
-                tools:ignore="ContentDescription" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/navProfile"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="vertical"
-            android:clickable="true"
-            android:focusable="true">
-
-            <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                app:srcCompat="@drawable/profile"
-                tools:ignore="ContentDescription" />
-        </LinearLayout>
-
+        app:layout_constraintBottom_toBottomOf="parent">
+        <LinearLayout android:id="@+id/navHome" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:gravity="center"><ImageView android:layout_width="24dp" android:layout_height="24dp" app:srcCompat="@drawable/homeico" /></LinearLayout>
+        <LinearLayout android:id="@+id/navCart" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:gravity="center"><ImageView android:layout_width="24dp" android:layout_height="24dp" app:srcCompat="@drawable/cart" /></LinearLayout>
+        <LinearLayout android:id="@+id/navProfile" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:gravity="center"><ImageView android:layout_width="24dp" android:layout_height="24dp" app:srcCompat="@drawable/profile" /></LinearLayout>
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

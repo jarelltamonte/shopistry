@@ -31,14 +31,20 @@ abstract class BakeryDatabase : RoomDatabase() {
                             scope.launch(Dispatchers.IO) {
                                 val dao = getDatabase(context, scope).bakeryDao()
 
-                                // 1. Hardcoded Users
-                                dao.insertUser(User(username = "admin", password = "123", role = "admin"))
-                                dao.insertUser(User(username = "jarell", password = "password", role = "customer"))
+                                val initialItems = listOf(
+                                    BakeryItem(0, "Butter Croissant", "Flaky and buttery", 75.0, "Pastries", 20, 0),
+                                    BakeryItem(0, "Sourdough Loaf", "Freshly fermented", 180.0, "Breads", 10, 0),
+                                    BakeryItem(0, "Chocolate Muffin", "Rich Belgian chocolate", 95.0, "Cakes", 15, 0),
+                                    BakeryItem(0, "Baguette", "Crispy French crust", 120.0, "Breads", 12, 0),
+                                    BakeryItem(0, "Red Velvet Cupcake", "Cream cheese frosting", 85.0, "Cakes", 18, 0),
+                                    BakeryItem(0, "Blueberry Danish", "Sweet and tangy", 110.0, "Pastries", 8, 0),
+                                    BakeryItem(0, "Whole Wheat Bread", "Healthy and fiber-rich", 140.0, "Breads", 15, 0),
+                                    BakeryItem(0, "Eclair", "Cream filled chocolate", 130.0, "Pastries", 10, 0),
+                                    BakeryItem(0, "Pandan Cake", "Filipino classic flavor", 450.0, "Cakes", 5, 0),
+                                    BakeryItem(0, "Cheese Ensaymada", "Sweet brioche with cheese", 65.0, "Pastries", 25, 0)
+                                )
 
-                                // 2. Hardcoded Bakery Items (Catalog)
-                                dao.insertItem(BakeryItem(itemName = "Croissant", itemDescription = "Buttery & Flaky", price = 75.0, category = "Pastries", stockQuantity = 10, imageResId = 0))
-                                dao.insertItem(BakeryItem(itemName = "Sourdough", itemDescription = "Freshly Fermented", price = 150.0, category = "Breads", stockQuantity = 5, imageResId = 0))
-                                dao.insertItem(BakeryItem(itemName = "Red Velvet Cupcake", itemDescription = "Cream cheese frosting", price = 95.0, category = "Cakes", stockQuantity = 8, imageResId = 0))
+                                initialItems.forEach { dao.insertItem(it) }
                             }
                         }
                     })

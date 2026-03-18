@@ -1,6 +1,7 @@
 package com.example.basicviews
 
 import androidx.room.*
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface BakeryDao {
@@ -12,11 +13,18 @@ interface BakeryDao {
     suspend fun insertUser(user: User)
 
     // --- ITEMS ---
+    // REMOVED 'suspend' and changed return type to Flow<List<BakeryItem>>
     @Query("SELECT * FROM items_table")
-    suspend fun getAllItems(): List<BakeryItem>
+    fun getAllItems(): Flow<List<BakeryItem>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertItem(item: BakeryItem)
+
+    @Delete
+    suspend fun deleteItem(item: BakeryItem)
+
+    @Query("SELECT * FROM items_table WHERE itemId = :id")
+    suspend fun getItemById(id: Int): BakeryItem?
 
     // --- CART ---
     @Insert
