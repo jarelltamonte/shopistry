@@ -1,5 +1,6 @@
 package com.example.basicviews
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -25,25 +26,30 @@ class ProfileFragment : Fragment() {
 
         loadUserData()
 
+        binding.logoutButton.setOnClickListener {
+            auth.signOut()
+            val intent = Intent(requireContext(), Login::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            startActivity(intent)
+        }
+
         return binding.root
     }
 
     private fun loadUserData() {
         val userId = auth.currentUser?.uid
         if (userId != null) {
-            // Use the exact database URL from your Register activity
             val database = FirebaseDatabase.getInstance("https://shopistry-8df94-default-rtdb.asia-southeast1.firebasedatabase.app")
                 .getReference("Users")
                 .child(userId)
 
             database.get().addOnSuccessListener { snapshot ->
                 if (snapshot.exists()) {
-                    // Pulling the keys you defined in userMap ("name", "phone", "email")
                     val name = snapshot.child("name").value.toString()
                     val phone = snapshot.child("phone").value.toString()
                     val email = snapshot.child("email").value.toString()
 
-                    // Setting the text to your XML IDs
+
                     binding.profileName.text = name
                     binding.profileContact.text = "Contact: $phone"
                     binding.profileEmail.text = "Email: $email"

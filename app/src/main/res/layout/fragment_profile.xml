@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F5F5F5"
     tools:context=".ProfileFragment">
 
     <ScrollView
@@ -15,14 +14,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:paddingBottom="80dp">
+            android:paddingBottom="80dp"
+            android:gravity="center">
 
-            <!-- Header Banner -->
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="180dp"
                 android:background="#e1e1e1">
-
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -31,22 +29,16 @@
                     android:textColor="#000000"
                     android:textSize="26sp"
                     android:textStyle="bold" />
-
             </FrameLayout>
 
-            <!-- Profile Image overlapping the banner -->
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="-60dp">
-
-                <!-- Circular image container -->
                 <FrameLayout
                     android:layout_width="120dp"
                     android:layout_height="120dp"
                     android:layout_gravity="center_horizontal">
-
-                    <!-- Profile picture -->
                     <ImageView
                         android:id="@+id/profileImage"
                         android:layout_width="120dp"
@@ -55,8 +47,6 @@
                         android:scaleType="centerCrop"
                         android:clipToOutline="true"
                         tools:src="@tools:sample/avatars" />
-
-                    <!-- Camera / Add icon badge -->
                     <ImageView
                         android:id="@+id/changePhotoBtn"
                         android:layout_width="32dp"
@@ -68,12 +58,9 @@
                         android:clickable="true"
                         android:focusable="true"
                         android:elevation="4dp" />
-
                 </FrameLayout>
-
             </FrameLayout>
 
-            <!-- Name -->
             <TextView
                 android:id="@+id/profileName"
                 android:layout_width="match_parent"
@@ -85,7 +72,6 @@
                 android:textSize="22sp"
                 android:textStyle="bold" />
 
-            <!-- Subtitle / role -->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -96,7 +82,6 @@
                 android:layout_marginTop="4dp"
                 android:layout_marginBottom="24dp" />
 
-            <!-- Info Card -->
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -122,100 +107,83 @@
                         android:letterSpacing="0.1"
                         android:layout_marginBottom="16dp" />
 
-                    <!-- Contact Row -->
+                    <!-- Contact -->
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
                         android:gravity="center_vertical"
                         android:layout_marginBottom="16dp">
-
-                        <ImageView
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
-                            android:src="@android:drawable/ic_menu_call"
-                            app:tint="#030237"
-                            tools:ignore="ContentDescription" />
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical"
-                            android:layout_marginStart="16dp">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Contact"
-                                android:textSize="12sp"
-                                android:textColor="#888888" />
-
-                            <TextView
-                                android:id="@+id/profileContact"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="+123456789"
-                                android:textSize="15sp"
-                                android:textColor="#1A1A1A"
-                                android:textStyle="bold" />
-
+                        <ImageView android:layout_width="20dp" android:layout_height="16dp" android:src="@android:drawable/ic_menu_call" app:tint="#030237" />
+                        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:layout_marginStart="16dp">
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Contact" android:textSize="12sp" android:textColor="#888888" />
+                            <TextView android:id="@+id/profileContact" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="+123456789" android:textSize="15sp" android:textColor="#1A1A1A" android:textStyle="bold" />
                         </LinearLayout>
-
                     </LinearLayout>
 
-                    <!-- Divider -->
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:background="#F0F0F0"
-                        android:layout_marginBottom="16dp" />
+                    <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#F0F0F0" android:layout_marginBottom="16dp" />
 
-                    <!-- Email Row -->
+                    <!-- Email -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:layout_marginBottom="16dp">
+                        <ImageView android:layout_width="20dp" android:layout_height="20dp" android:src="@android:drawable/ic_dialog_email" app:tint="#030237" />
+                        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:layout_marginStart="16dp">
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Email" android:textSize="12sp" android:textColor="#888888" />
+                            <TextView android:id="@+id/profileEmail" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="john.doe@example.com" android:textSize="15sp" android:textColor="#1A1A1A" android:textStyle="bold" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#F0F0F0" android:layout_marginBottom="16dp" />
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
                         android:gravity="center_vertical">
-
                         <ImageView
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
-                            android:src="@android:drawable/ic_dialog_email"
-                            app:tint="#030237"
-                            tools:ignore="ContentDescription" />
-
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:src="@android:drawable/ic_menu_directions"
+                            app:tint="#030237" />
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="vertical"
                             android:layout_marginStart="16dp">
-
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Email"
+                                android:text="Address"
                                 android:textSize="12sp"
                                 android:textColor="#888888" />
-
                             <TextView
-                                android:id="@+id/profileEmail"
+                                android:id="@+id/profileAddress"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="john.doe@example.com"
+                                android:text="123 Street Name, City"
                                 android:textSize="15sp"
                                 android:textColor="#1A1A1A"
                                 android:textStyle="bold" />
-
                         </LinearLayout>
-
                     </LinearLayout>
-
                 </LinearLayout>
-
             </androidx.cardview.widget.CardView>
 
+            <Button
+                android:id="@+id/logoutButton"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginTop="24dp"
+                android:backgroundTint="#030237"
+                android:text="Logout"
+                android:textColor="#FFFFFF" />
+
         </LinearLayout>
-
     </ScrollView>
-
 </FrameLayout>
