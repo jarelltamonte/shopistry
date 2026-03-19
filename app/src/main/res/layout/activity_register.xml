@@ -20,7 +20,8 @@
             android:layout_height="wrap_content"
             android:text="Don't Have an Account?"
             android:textSize="32sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:textColor="#030237"/>
 
         <com.google.android.material.textfield.TextInputLayout
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -124,7 +125,7 @@
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="50dp"
-            android:backgroundTint="#3C3A3A"
+            android:backgroundTint="#030237"
             android:text="Register"
             android:textSize="16sp" />
 

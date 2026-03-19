@@ -7,7 +7,6 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import com.example.basicviews.databinding.ActivityLoginBinding
 import com.google.firebase.auth.FirebaseAuth
-// ADD THESE TWO IMPORTS
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.DatabaseReference
 
