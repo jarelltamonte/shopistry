@@ -12,9 +12,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BasicViews">
         <activity
-            android:name=".OrderList"
+            android:name=".Tab"
             android:exported="false" />
-        <!-- <activity -->
+        <activity
+            android:name=".OrderList"
+            android:exported="false" /> <!-- <activity -->
         <!-- android:name=".ItemInfo" -->
         <!-- android:exported="false" /> -->
         <!-- <activity -->
@@ -46,14 +48,8 @@
         </activity>
         <activity
             android:name=".Register"
-            android:exported="false">
+            android:exported="false"></activity>
 
-        </activity>
-        <activity
-            android:name=".Dashboard"
-            android:exported="false">
-
-        </activity>
     </application>
 
 </manifest>
