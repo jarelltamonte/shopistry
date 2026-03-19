@@ -63,7 +63,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <CheckBox
-            android:id="@+id/checkBox"
+            android:id="@+id/rememberMe"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:text="Remember me" />
