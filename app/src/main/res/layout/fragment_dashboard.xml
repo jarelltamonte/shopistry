@@ -22,7 +22,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView11"
+        android:id="@+id/tvWelcome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
@@ -33,7 +33,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/searchView" />
 
-    <!-- Categories Section -->
     <TextView
         android:id="@+id/tvCategoriesTitle"
         android:layout_width="wrap_content"
@@ -44,7 +43,7 @@
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView11" />
+        app:layout_constraintTop_toBottomOf="@+id/tvWelcome" />
 
     <HorizontalScrollView
         android:id="@+id/categoriesScrollView"
@@ -63,9 +62,8 @@
             android:paddingStart="12dp"
             android:paddingEnd="12dp">
 
-            <!-- Gadgets Category -->
             <androidx.cardview.widget.CardView
-                android:id="@+id/categoryGadgets"
+                android:id="@+id/categoryBread"
                 android:layout_width="120dp"
                 android:layout_height="100dp"
                 android:layout_marginEnd="12dp"
@@ -73,33 +71,25 @@
                 app:cardElevation="4dp"
                 android:clickable="true"
                 android:focusable="true">
-
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center"
-                    android:orientation="vertical"
-                    android:padding="12dp">
-
+                    android:orientation="vertical">
                     <ImageView
                         android:layout_width="40dp"
                         android:layout_height="40dp"
-                        android:src="@android:drawable/ic_menu_gallery"
-                        tools:ignore="ContentDescription" />
-
+                        android:src="@android:drawable/ic_menu_gallery" />
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:text="Gadgets"
-                        android:textSize="14sp"
+                        android:text="Bread"
                         android:textStyle="bold" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
-            <!-- Clothing Category (Repeat for others) -->
             <androidx.cardview.widget.CardView
-                android:id="@+id/categoryClothing"
+                android:id="@+id/categoryCakes"
                 android:layout_width="120dp"
                 android:layout_height="100dp"
                 android:layout_marginEnd="12dp"
@@ -117,7 +107,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Clothing"
+                        android:text="Cakes"
                         android:textStyle="bold" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
@@ -125,51 +115,29 @@
         </LinearLayout>
     </HorizontalScrollView>
 
-    <!-- Products Title -->
     <TextView
         android:id="@+id/tvProductsTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
         android:layout_marginTop="16dp"
-        android:text="Products"
+        android:text="All Products"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/categoriesScrollView" />
 
-    <!-- Product 1 Card -->
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardProduct1"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvInventory"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_margin="12dp"
-        app:cardCornerRadius="12dp"
-        app:cardElevation="4dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        android:paddingBottom="16dp"
+        android:clipToPadding="false"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvProductsTitle">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="16dp">
-
-            <TextView
-                android:id="@+id/tvProductName1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="iPhone 15"
-                android:textSize="16sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="$999.00"
-                android:textColor="@android:color/holo_green_dark" />
-        </LinearLayout>
-    </androidx.cardview.widget.CardView>
+        app:layout_constraintTop_toBottomOf="@id/tvProductsTitle"
+        tools:listitem="@layout/activity_inventory_item" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
