@@ -87,28 +87,22 @@
             android:background="#CCCCCC" />
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/google"
+            android:id="@+id/forgotPassword"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:backgroundTint="#FDFDFD"
-            android:text="Continue with Google"
+            android:text="Forgot Password?"
             android:textAllCaps="false"
-            android:textColor="#000000"
+            android:textColor="#030237"
             android:textSize="16sp"
-            app:cornerRadius="12dp"
-            app:icon="@drawable/google"
-            app:iconGravity="textStart"
-            app:iconPadding="12dp"
-            app:iconTint="@null"
-            app:strokeColor="#DADCE0"
             app:strokeWidth="1dp" />
 
         <TextView
             android:id="@+id/registerLink"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:text="Don't have an account? Register" />
+            android:layout_marginTop="40dp"
+            android:text="@string/register_text" />
 
     </LinearLayout>
 

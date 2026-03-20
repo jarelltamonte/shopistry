@@ -17,6 +17,9 @@
         <activity
             android:name=".Tab"
             android:exported="false" />
+        <activity
+            android:name=".ForgotPassword"
+            android:exported="false" />
 
         <activity
             android:name=".Login"

@@ -17,17 +17,16 @@
             android:paddingBottom="80dp"
             android:gravity="center">
 
-            <!-- Header Banner -->
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="180dp"
-                android:background="#e1e1e1">
+                android:background="#030237">
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:text="My Profile"
-                    android:textColor="#000000"
+                    android:textColor="#ffffff"
                     android:textSize="26sp"
                     android:textStyle="bold" />
             </FrameLayout>
