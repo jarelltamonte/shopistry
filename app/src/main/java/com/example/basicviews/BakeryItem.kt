@@ -7,4 +7,5 @@ data class BakeryItem(
     val price: String? = null,
     val category: String? = null,
     val description: String? = null,
+    val image: String? = null,
 )
