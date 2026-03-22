@@ -1,5 +1,6 @@
 package com.example.basicviews
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
@@ -45,6 +46,13 @@ class Admin : AppCompatActivity() {
 
         itemList = mutableListOf()
         adapter = InventoryAdapter(itemList, userRole)
+
+        binding.logoutButton.setOnClickListener {
+            firebaseAuth.signOut()
+            val intent = Intent(this, Login::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            startActivity(intent)
+        }
 
         binding.inventoryRecyclerView.layoutManager = GridLayoutManager(this, 2)
         binding.inventoryRecyclerView.adapter = adapter
