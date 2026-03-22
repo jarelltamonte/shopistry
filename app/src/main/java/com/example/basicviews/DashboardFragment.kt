@@ -23,6 +23,7 @@ class DashboardFragment : Fragment() {
     private val allProductsList = mutableListOf<BakeryItem>()
     private val displayList = mutableListOf<BakeryItem>()
     private lateinit var adapter: InventoryAdapter
+    private var userRole = "customer"
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -41,6 +42,7 @@ class DashboardFragment : Fragment() {
         database = FirebaseDatabase.getInstance(databaseUrl).getReference("Inventory")
 
         setupRecyclerView()
+        fetchUserRoleThenLoad()
 
         fetchInventoryData()
 
@@ -48,11 +50,33 @@ class DashboardFragment : Fragment() {
         setupSearch()
     }
 
+    private fun fetchUserRoleThenLoad() {
+        val uid = FirebaseAuth.getInstance().currentUser?.uid ?: run {
+            setupRecyclerView()
+            fetchInventoryData()
+            return
+        }
+
+        val usersRef = FirebaseDatabase.getInstance(
+            "https://shopistry-8df94-default-rtdb.asia-southeast1.firebasedatabase.app"
+        ).getReference("Users").child(uid).child("role")
+
+        usersRef.get().addOnSuccessListener { snapshot ->
+            userRole = snapshot.getValue(String::class.java) ?: "customer"
+            setupRecyclerView()
+            fetchInventoryData()
+        }.addOnFailureListener {
+            setupRecyclerView()
+            fetchInventoryData()
+        }
+    }
+
     private fun setupRecyclerView() {
         binding.productsRecyclerView.layoutManager = GridLayoutManager(requireContext(), 2)
-        adapter = InventoryAdapter(displayList)
+        adapter = InventoryAdapter(displayList, userRole) // ✅ pass role
         binding.productsRecyclerView.adapter = adapter
     }
+
 
     private fun fetchInventoryData() {
         database.addValueEventListener(object : ValueEventListener {
@@ -66,7 +90,6 @@ class DashboardFragment : Fragment() {
             }
 
             override fun onCancelled(error: DatabaseError) {
-                // Use requireContext() for Toasts in Fragments
                 Toast.makeText(requireContext(), "Database Error: ${error.message}", Toast.LENGTH_SHORT).show()
             }
         })

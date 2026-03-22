@@ -24,7 +24,6 @@
             android:textStyle="bold" />
     </FrameLayout>
 
-    <!-- This is where your list will live -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/inventoryRecyclerView"
         android:layout_width="match_parent"

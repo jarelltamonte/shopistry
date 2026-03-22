@@ -214,7 +214,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="40dp"
                 android:backgroundTint="#030237"
-                android:text="Publish"
+                android:text="Add"
                 android:textSize="16sp" />
         </LinearLayout>
 

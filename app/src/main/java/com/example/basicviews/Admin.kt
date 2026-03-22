@@ -24,6 +24,7 @@ class Admin : AppCompatActivity() {
     // ✅ RecyclerView variables
     private lateinit var itemList: MutableList<BakeryItem>
     private lateinit var adapter: InventoryAdapter
+    private var userRole = "admin"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,7 +44,7 @@ class Admin : AppCompatActivity() {
         }
 
         itemList = mutableListOf()
-        adapter = InventoryAdapter(itemList)
+        adapter = InventoryAdapter(itemList, userRole)
 
         binding.inventoryRecyclerView.layoutManager = GridLayoutManager(this, 2)
         binding.inventoryRecyclerView.adapter = adapter
