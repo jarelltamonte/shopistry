@@ -50,10 +50,24 @@ class InventoryAdapter(
             .placeholder(R.drawable.ic_launcher_background)
             .error(R.drawable.ic_launcher_background)
             .into(holder.image)
+
         holder.editButton.visibility = if (userRole == "customer") View.GONE else View.VISIBLE
 
         holder.editButton.setOnClickListener {
             showEditPopup(holder.itemView.context, item)
+        }
+
+        holder.itemView.setOnClickListener {
+            val context = holder.itemView.context
+            val intent = android.content.Intent(context, ItemInfo::class.java).apply {
+                putExtra("PRODUCT_NAME", item.productName)
+                putExtra("PRODUCT_PRICE", item.price)
+                putExtra("PRODUCT_CATEGORY", item.category)
+                putExtra("PRODUCT_DESC", item.description)
+                putExtra("PRODUCT_STOCK", item.quantity)
+                putExtra("PRODUCT_IMAGE", item.image)
+            }
+            context.startActivity(intent)
         }
     }
 
