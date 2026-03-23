@@ -190,24 +190,42 @@
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
-            <!-- Pastries Category -->
 
         </LinearLayout>
 
     </HorizontalScrollView>
 
-    <!-- Products Title -->
-    <TextView
-        android:id="@+id/tvProductsTitle"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/productsHeader"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
         android:layout_marginTop="16dp"
-        android:text="Products"
-        android:textSize="18sp"
-        android:textStyle="bold"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="12dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        app:layout_constraintTop_toBottomOf="@+id/categoriesScrollView"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/categoriesScrollView" />
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <TextView
+            android:id="@+id/tvProductsTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Products"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <ImageButton
+            android:id="@+id/btnSort"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="8dp"
+            android:src="@android:drawable/arrow_up_float"
+            android:background="?attr/selectableItemBackgroundBorderless" />
+
+    </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/productsRecyclerView"
@@ -216,7 +234,7 @@
         android:layout_marginTop="8dp"
         android:padding="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvProductsTitle"
+        app:layout_constraintTop_toBottomOf="@+id/productsHeader"
         tools:listitem="@layout/inventory_item" />
 
 

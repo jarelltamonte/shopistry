@@ -16,14 +16,17 @@ class DashboardFragment : Fragment() {
 
     private var _binding: FragmentDashboardBinding? = null
     private val binding get() = _binding!!
-    val user = FirebaseAuth.getInstance().currentUser
-    val name = user?.displayName ?: "Guest"
+
+    private val user = FirebaseAuth.getInstance().currentUser
+    private val name = user?.displayName ?: "Guest"
 
     private lateinit var database: DatabaseReference
     private val allProductsList = mutableListOf<BakeryItem>()
     private val displayList = mutableListOf<BakeryItem>()
     private lateinit var adapter: InventoryAdapter
+
     private var userRole = "customer"
+    private var isAscending = true
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -31,28 +34,39 @@ class DashboardFragment : Fragment() {
     ): View {
         _binding = FragmentDashboardBinding.inflate(inflater, container, false)
         return binding.root
-
-        binding.userGreeting.text = "Good morning, $name"
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        binding.userGreeting.text = "Good morning, $name"
+
+        binding.btnSort.setOnClickListener {
+            if (isAscending) {
+                displayList.sortBy { it.price }
+                binding.btnSort.setImageResource(android.R.drawable.arrow_down_float)
+            } else {
+                displayList.sortByDescending { it.price }
+                binding.btnSort.setImageResource(android.R.drawable.arrow_up_float)
+            }
+
+            isAscending = !isAscending
+            adapter.notifyDataSetChanged()
+        }
 
         val databaseUrl = "https://shopistry-8df94-default-rtdb.asia-southeast1.firebasedatabase.app"
         database = FirebaseDatabase.getInstance(databaseUrl).getReference("Inventory")
 
         setupRecyclerView()
         fetchUserRoleThenLoad()
-
-        fetchInventoryData()
-
         setupCategoryClickListeners()
         setupSearch()
     }
 
     private fun fetchUserRoleThenLoad() {
-        val uid = FirebaseAuth.getInstance().currentUser?.uid ?: run {
-            setupRecyclerView()
+        val uid = FirebaseAuth.getInstance().currentUser?.uid
+
+        if (uid == null) {
             fetchInventoryData()
             return
         }
@@ -66,31 +80,37 @@ class DashboardFragment : Fragment() {
             setupRecyclerView()
             fetchInventoryData()
         }.addOnFailureListener {
-            setupRecyclerView()
             fetchInventoryData()
         }
     }
 
     private fun setupRecyclerView() {
-        binding.productsRecyclerView.layoutManager = GridLayoutManager(requireContext(), 2)
-        adapter = InventoryAdapter(displayList, userRole) // ✅ pass role
+        binding.productsRecyclerView.layoutManager =
+            GridLayoutManager(requireContext(), 2)
+
+        adapter = InventoryAdapter(displayList, userRole)
         binding.productsRecyclerView.adapter = adapter
     }
-
 
     private fun fetchInventoryData() {
         database.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 allProductsList.clear()
+
                 for (itemSnapshot in snapshot.children) {
                     val item = itemSnapshot.getValue(BakeryItem::class.java)
                     item?.let { allProductsList.add(it) }
                 }
+
                 showFilteredList(allProductsList)
             }
 
             override fun onCancelled(error: DatabaseError) {
-                Toast.makeText(requireContext(), "Database Error: ${error.message}", Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    requireContext(),
+                    "Database Error: ${error.message}",
+                    Toast.LENGTH_SHORT
+                ).show()
             }
         })
     }
@@ -100,7 +120,10 @@ class DashboardFragment : Fragment() {
         binding.categoryCakes.setOnClickListener { filterByCategory("Cakes") }
         binding.categoryBreads.setOnClickListener { filterByCategory("Breads") }
         binding.categoryPastries.setOnClickListener { filterByCategory("Pastries") }
-        binding.tvCategoriesTitle.setOnClickListener { showFilteredList(allProductsList) }
+
+        binding.tvCategoriesTitle.setOnClickListener {
+            showFilteredList(allProductsList)
+        }
     }
 
     private fun filterByCategory(categoryName: String) {
@@ -111,13 +134,18 @@ class DashboardFragment : Fragment() {
     }
 
     private fun setupSearch() {
-        binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+        binding.searchView.setOnQueryTextListener(object :
+            SearchView.OnQueryTextListener {
+
             override fun onQueryTextSubmit(query: String?): Boolean = false
+
             override fun onQueryTextChange(newText: String?): Boolean {
                 val searchText = newText?.lowercase() ?: ""
+
                 val filtered = allProductsList.filter {
                     it.productName?.lowercase()?.contains(searchText) == true
                 }
+
                 showFilteredList(filtered)
                 return true
             }
@@ -127,6 +155,13 @@ class DashboardFragment : Fragment() {
     private fun showFilteredList(newList: List<BakeryItem>) {
         displayList.clear()
         displayList.addAll(newList)
+
+        if (isAscending) {
+            displayList.sortBy { it.productName }
+        } else {
+            displayList.sortByDescending { it.productName }
+        }
+
         adapter.notifyDataSetChanged()
     }
 
