@@ -1,16 +1,25 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:padding="8dp"
     android:gravity="center">
 
-    <ImageView
-        android:id="@+id/itemImage"
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="120dp"
-        android:scaleType="centerCrop"
-        android:src="@drawable/ic_launcher_background" />
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="16dp">
+
+        <ImageView
+            android:id="@+id/itemImage"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_launcher_background"
+            />
+
+    </androidx.cardview.widget.CardView>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -23,7 +32,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Product Name"
-            android:textSize="16sp"
+            android:textSize="22sp"
             android:textStyle="bold"
             android:layout_marginTop="4dp"/>
 
@@ -60,13 +69,16 @@
 
     </LinearLayout>
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/editButton"
-        android:layout_width="300dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Edit"
+        android:textColor="#030237"
         android:layout_marginTop="10dp"
-        android:backgroundTint="#030237"/>
+        android:backgroundTint="#ffffff"
+        app:strokeColor="#030237"
+        app:strokeWidth="1dp"/>
 
 
 </LinearLayout>
