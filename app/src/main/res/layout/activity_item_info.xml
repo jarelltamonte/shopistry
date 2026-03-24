@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
@@ -8,23 +9,6 @@
     android:background="#FAFAFA"
     tools:context=".ItemInfo">
 
-    <!-- Back Button -->
-    <ImageView
-        android:id="@+id/btnBack"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_margin="16dp"
-        android:background="@android:color/white"
-        android:clickable="true"
-        android:elevation="4dp"
-        android:focusable="true"
-        android:padding="8dp"
-        android:src="@android:drawable/ic_menu_revert"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="ContentDescription" />
-
-    <!-- Scrollable Content -->
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -38,32 +22,45 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <!-- Product Image Card -->
             <androidx.cardview.widget.CardView
+                android:id="@+id/imageCard"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="16dp"
-                app:cardCornerRadius="16dp"
+                android:layout_height="300dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
                 app:cardElevation="4dp">
 
                 <ImageView
-                    android:id="@+id/imageView2"
+                    android:id="@+id/productImage"
                     android:layout_width="match_parent"
-                    android:layout_height="300dp"
+                    android:layout_height="match_parent"
                     android:scaleType="centerCrop"
                     tools:ignore="ContentDescription"
                     tools:srcCompat="@tools:sample/avatars" />
 
+                <ImageView
+                    android:id="@+id/btnBack"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="end|top"
+                    android:layout_margin="16dp"
+                    android:background="@android:color/white"
+                    android:clickable="true"
+                    android:elevation="8dp"
+                    android:focusable="true"
+                    android:padding="8dp"
+                    android:scaleType="center"
+                    android:src="@android:drawable/ic_menu_close_clear_cancel"
+                    tools:ignore="ContentDescription" />
             </androidx.cardview.widget.CardView>
 
-            <!-- Product Info Card -->
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginBottom="12dp"
-                app:cardCornerRadius="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginBottom="16dp"
                 app:cardElevation="2dp">
 
                 <LinearLayout
@@ -72,12 +69,11 @@
                     android:orientation="vertical"
                     android:padding="20dp">
 
-                    <!-- Product Name -->
                     <TextView
-                        android:id="@+id/textView4"
+                        android:id="@+id/tvProductName"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="iPhone 17 Pro Max"
+                        android:text="Bakery Item Name"
                         android:textColor="#212121"
                         android:textSize="28sp"
                         android:textStyle="bold" />
@@ -88,12 +84,12 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
-                        android:text="PHP 99,990.00"
+                        android:text="PHP 0.00"
                         android:textColor="#2E7D32"
                         android:textSize="24sp"
                         android:textStyle="bold" />
 
-                    <!-- Stock Status -->
+                    <!-- Stock Info -->
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -106,10 +102,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:background="@android:color/holo_green_dark"
-                            android:paddingStart="12dp"
-                            android:paddingTop="4dp"
-                            android:paddingEnd="12dp"
-                            android:paddingBottom="4dp"
+                            android:paddingHorizontal="12dp"
+                            android:paddingVertical="4dp"
                             android:text="In Stock"
                             android:textColor="@android:color/white"
                             android:textSize="14sp" />
@@ -119,34 +113,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="12dp"
-                            android:text="Available: 25 units"
-                            android:textColor="#757575"
-                            android:textSize="14sp" />
-
-                    </LinearLayout>
-
-                    <!-- Rating -->
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="12dp"
-                        android:gravity="center_vertical"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:id="@+id/tvRating"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="⭐ 4.8"
-                            android:textColor="#212121"
-                            android:textSize="16sp"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="8dp"
-                            android:text="(128 reviews)"
+                            android:text="Available: 0 units"
                             android:textColor="#757575"
                             android:textSize="14sp" />
 
@@ -156,11 +123,9 @@
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
-                        android:layout_marginTop="16dp"
-                        android:layout_marginBottom="16dp"
+                        android:layout_marginVertical="16dp"
                         android:background="#E0E0E0" />
 
-                    <!-- Description Title -->
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -169,16 +134,14 @@
                         android:textSize="18sp"
                         android:textStyle="bold" />
 
-                    <!-- Description -->
                     <TextView
-                        android:id="@+id/textView5"
+                        android:id="@+id/tvDescription"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
                         android:justificationMode="inter_word"
-                        android:lineBreakStyle="normal"
                         android:lineSpacingExtra="4dp"
-                        android:text="The iPhone 17 Pro Max features cutting-edge technology with an advanced camera system, powerful A17 Pro chip, and stunning Super Retina XDR display. Experience unparalleled performance and innovation."
+                        android:text="Delicious freshly baked goods."
                         android:textColor="#424242"
                         android:textSize="15sp" />
 
@@ -186,11 +149,10 @@
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
-                        android:layout_marginTop="16dp"
-                        android:layout_marginBottom="16dp"
+                        android:layout_marginVertical="16dp"
                         android:background="#E0E0E0" />
 
-                    <!-- Quantity Selector -->
+                    <!-- Quantity -->
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -210,206 +172,31 @@
                             android:id="@+id/btnDecrease"
                             android:layout_width="48dp"
                             android:layout_height="48dp"
-                            android:backgroundTint="#E0E0E0"
+                            android:backgroundTint="#403939"
+                            android:padding="0dp"
                             android:text="-"
-                            android:textColor="#212121"
-                            android:textSize="20sp" />
+                            android:textColor="@android:color/white"
+                            android:textSize="24sp"
+                            app:cornerRadius="8dp" />
 
                         <TextView
                             android:id="@+id/tvQuantity"
-                            android:layout_width="60dp"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="12dp"
-                            android:layout_marginEnd="12dp"
-                            android:gravity="center"
+                            android:layout_marginHorizontal="16dp"
                             android:text="1"
-                            android:textColor="#212121"
-                            android:textSize="20sp"
-                            android:textStyle="bold" />
+                            android:textSize="18sp" />
 
                         <Button
                             android:id="@+id/btnIncrease"
                             android:layout_width="48dp"
                             android:layout_height="48dp"
-                            android:backgroundTint="#2196F3"
+                            android:backgroundTint="#403939"
+                            android:padding="0dp"
                             android:text="+"
                             android:textColor="@android:color/white"
-                            android:textSize="20sp" />
-
-                    </LinearLayout>
-
-                    <!-- Variant Selector -->
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
-                        android:text="Select Color"
-                        android:textColor="#212121"
-                        android:textSize="16sp"
-                        android:textStyle="bold" />
-
-                    <Spinner
-                        android:id="@+id/spinner"
-                        android:layout_width="match_parent"
-                        android:layout_height="48dp"
-                        android:layout_marginTop="8dp"
-                        android:background="@android:drawable/btn_dropdown"
-                        android:padding="12dp" />
-
-                </LinearLayout>
-
-            </androidx.cardview.widget.CardView>
-
-            <!-- Reviews Section -->
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginBottom="12dp"
-                app:cardCornerRadius="16dp"
-                app:cardElevation="2dp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="20dp">
-
-                    <!-- Reviews Header -->
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center_vertical"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:id="@+id/textView6"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="Customer Reviews"
-                            android:textColor="#212121"
                             android:textSize="20sp"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:clickable="true"
-                            android:focusable="true"
-                            android:text="See All"
-                            android:textColor="#2196F3"
-                            android:textSize="14sp" />
-
-                    </LinearLayout>
-
-                    <!-- Review 1 -->
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
-                        android:background="#F5F5F5"
-                        android:orientation="vertical"
-                        android:padding="12dp">
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:gravity="center_vertical"
-                            android:orientation="horizontal">
-
-                            <TextView
-                                android:id="@+id/textView7"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="John Doe"
-                                android:textColor="#212121"
-                                android:textSize="16sp"
-                                android:textStyle="bold" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="2 days ago"
-                                android:textColor="#757575"
-                                android:textSize="12sp" />
-
-                        </LinearLayout>
-
-                        <TextView
-                            android:id="@+id/textView8"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="4dp"
-                            android:text="⭐⭐⭐⭐⭐"
-                            android:textSize="16sp" />
-
-                        <TextView
-                            android:id="@+id/textView9"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="8dp"
-                            android:justificationMode="inter_word"
-                            android:lineBreakStyle="normal"
-                            android:lineSpacingExtra="2dp"
-                            android:text="Amazing product! The quality is top-notch and exceeded my expectations. Highly recommend to anyone looking for a premium device."
-                            android:textColor="#424242"
-                            android:textSize="14sp" />
-
-                    </LinearLayout>
-
-                    <!-- Review 2 -->
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="12dp"
-                        android:background="#F5F5F5"
-                        android:orientation="vertical"
-                        android:padding="12dp">
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:gravity="center_vertical"
-                            android:orientation="horizontal">
-
-                            <TextView
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="Sarah Smith"
-                                android:textColor="#212121"
-                                android:textSize="16sp"
-                                android:textStyle="bold" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="1 week ago"
-                                android:textColor="#757575"
-                                android:textSize="12sp" />
-
-                        </LinearLayout>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="4dp"
-                            android:text="⭐⭐⭐⭐"
-                            android:textSize="16sp" />
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="8dp"
-                            android:justificationMode="inter_word"
-                            android:lineBreakStyle="normal"
-                            android:lineSpacingExtra="2dp"
-                            android:text="Great value for money. Fast shipping and excellent customer service. Would buy again!"
-                            android:textColor="#424242"
-                            android:textSize="14sp" />
+                            app:cornerRadius="8dp" />
 
                     </LinearLayout>
 
@@ -417,7 +204,6 @@
 
             </androidx.cardview.widget.CardView>
 
-            <!-- Bottom Spacing -->
             <View
                 android:layout_width="match_parent"
                 android:layout_height="24dp" />
@@ -426,7 +212,7 @@
 
     </ScrollView>
 
-    <!-- Bottom Action Buttons -->
+    <!-- Bottom Buttons -->
     <LinearLayout
         android:id="@+id/bottomActions"
         android:layout_width="match_parent"
@@ -437,15 +223,15 @@
         android:orientation="horizontal"
         android:padding="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
         <Button
-            android:id="@+id/button5"
+            android:id="@+id/addCart"
             android:layout_width="0dp"
             android:layout_height="56dp"
-            android:layout_marginEnd="8dp"
             android:layout_weight="1"
+            android:layout_marginEnd="8dp"
             android:backgroundTint="#757575"
             android:text="Add to Cart"
             android:textColor="@android:color/white"
@@ -453,13 +239,13 @@
             android:textStyle="bold" />
 
         <Button
-            android:id="@+id/button4"
+            android:id="@+id/viewButton"
             android:layout_width="0dp"
             android:layout_height="56dp"
-            android:layout_marginStart="8dp"
             android:layout_weight="1"
+            android:layout_marginStart="8dp"
             android:backgroundTint="#403939"
-            android:text="Buy Now"
+            android:text="View Cart"
             android:textColor="@android:color/white"
             android:textSize="16sp"
             android:textStyle="bold" />
